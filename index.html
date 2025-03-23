@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DOM Manipulation Assignment</title>
+  <link rel="stylesheet" href="https://unpkg.com/bootstrap/dist/css/bootstrap.css">
+  <style>
+    img {
+      max-width: 70%;
+    }
+
+    .image-center {
+      display: block;
+      margin: 10px auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1 id="title" class="text-center">Welcome to my website.</h1>
+    <div class="row">
+      <article class="col-sm-8">
+        <p>My website is very important because I have many important things to say. Here is a picture of a puppy in a cup:</p>
+        <img src="pup-in-cup.jpg" alt="Puppy in Cup">
+        <p>Here are some more thoughts: Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius, natus qui nostrum libero atque hic distinctio sint facilis nihil possimus.</p>
+        <p>Rerum debitis aspernatur, ipsum animi! Quis ullam dolore blanditiis accusantium eius minus tempore.</p>
+        <p>Aliquam harum at soluta id esse perspiciatis, nesciunt corporis nostrum commodi.</p>
+        <p>Consequuntur porro, nobis placeat, labore magni aliquam repellendus
+            consequatur hic facere, molestiae dolorum suscipit quos sint, minima
+            Quibusdam voluptatem est hic, corporis. Officiis delectus, consectetur
+            harum reiciendis perferendis.</p>
+        
+      </article>
+      <aside class="col-sm-4">
+        <h4>here are some fun facts!</h4>
+        <ol>
+          <li>Octopuses have three hearts, and two of them stop beating when they swim.</li>
+          <li>Bananas are berries, but strawberries aren't!</li>
+          <li>There are more stars in the universe than grains of sand on Earth.</li>
+          <li>Honey never spoils!</li>
+        </ol>
+      </aside>
+    </div>
+    <div class="row mb-5">
+      <div class="col-sm-4">
+        Red
+        <input class="form-control" type="number" min="0" max="255" value="255">
+      </div>
+      <div class="col-sm-4">
+        Blue
+        <input class="form-control" type="number" min="0" max="255" value="255">
+      </div>
+      <div class="col-sm-4">
+        Green
+        <input class="form-control" type="number" min="0" max="255" value="255">
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+  <script>
+    $(function () {
+    // 1. Logs a message when the DOM is ready
+    console.log("Lets get ready to party with jQuery!");
+  
+    // 2. Adds 'image-center' class to all images inside article
+    $("article img").addClass("image-center");
+  
+    // 3. Removes the last paragraph in the article
+    $("article p:last-child").remove();
+  
+    // 4. Sets the font size of the title to a random pixel size from 0 to 100
+    $("#title").css("font-size", Math.floor(Math.random() * 100) + "px");
+  
+    // 5. Adds a new item to the list
+    $("ol").append("<li>Added dynamically with jQuery!</li>");
+  
+    // 6. Empties the aside and add an apology paragraph for list
+    $("aside").empty().append("<p>Oops that list was boring sorry about that you can keep moving on!:D</p>");
+  
+    // 7. Changes the background color based on RGB input values
+    $(".form-control").on("input", function () {
+      const red = $(".form-control").eq(0).val();
+      const blue = $(".form-control").eq(1).val();
+      const green = $(".form-control").eq(2).val();
+      $("body").css("background-color", `rgb(${red}, ${green}, ${blue})`);
+    });
+  
+    // 8. Removes an image from the DOM when clicked
+    $("img").on("click", function () {
+      $(this).remove();
+    });
+  });
+  
+  </script>
+
+</body>
+</html>
